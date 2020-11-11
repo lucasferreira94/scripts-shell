@@ -31,7 +31,7 @@ KERNEL=$(uname -or)
 CPUCORE=$(grep "cpu cores" /proc/cpuinfo |head -n1 |tr '\t' ' ')
 CPUVERSION=$(grep "model name" /proc/cpuinfo |head -n1 |tr '\t' ' ')
 MEMTOTAL=$(free -h |head -n2 |awk '{print $2}' |tail -n1)
-DISCO=$(df -h |grep -v "tmp" |grep -v "udev" |grep -v "loop")
+DISCO=$(df -h | sed '/tmpfs/d;/udev/d')
 # -------------------------------------- EXECUÇÃO ------------------------------------------ #
 
 echo -e "=======================================================
