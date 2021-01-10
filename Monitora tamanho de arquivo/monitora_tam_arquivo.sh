@@ -37,15 +37,15 @@ echo
 
 PCTG_EXIB=0
 
-while [[ $(stat --printf=%s "$ARQUIVO") -lt $SIZE ]]
+while [[ $(stat --printf=%s "$ARQUIVO") -lt $SIZE ]] #Qual é o tamanho do arquivo?
 do
 	echo -n "$WORDS" >> "$ARQUIVO"
 	
-	TAM_ATUAL=$(stat --printf=%s "$ARQUIVO")
+	TAM_ATUAL=$(stat --printf=%s "$ARQUIVO") #Qual é o tamanho atual do arquivo?
 
-	PCTG=$(expr $TAM_ATUAL \* 100 / $SIZE)
+	PCTG=$(expr $TAM_ATUAL \* 100 / $SIZE) #Qual a porcentagem do arquivo?
 
-	if [ $(expr $PCTG % 10) -eq 0 -a $PCTG_EXIB -ne $PCTG ]
+	if [ $(expr $PCTG % 10) -eq 0 -a $PCTG_EXIB -ne $PCTG ] #Porcetagem igual a 0? porcetagem exibida na tela não é igual a 100% ?
 	then	
 		echo "Concluído: $PCTG % - Tamanho do arquivo: $TAM_ATUAL"
 		PCTG_EXIB=$PCTG 
