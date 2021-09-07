@@ -19,6 +19,10 @@ iptables -A OUTPUT -o lo -j ACCEPT
 
 # ================== REDE LOCAL <-> INTERNET =================== #
 
+# Habilitar Acesso via SSH da Rede Local para o Firewall
+
+iptables -A OUTPUT -p tcp --sport 22 -o enp0s8 -d 192.168.1.0/24 -j ACCEPT
+iptables -A INPUT -p tcp --dport 22 -i enp0s8 -s 192.168.1.0/24 -j ACCEPT
 
 # ================== FIREWALL <-> INTERNET ===================== #
 
