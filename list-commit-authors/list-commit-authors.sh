@@ -6,9 +6,9 @@
 #   v1.0
 #
 #   How to use:
-#   chmod +x ./list-commit-authors.sh
-#   Execute the script "./list-commit-authors.sh" into a directory which have all repos cloned into it 
-#   Then, verify the content of file "commit-users.txt" to check how many users commited into your projects
+#   1. chmod +x ./list-commit-authors.sh
+#   2. Execute the script "./list-commit-authors.sh" into a directory which have all repos cloned into it 
+#   3. Then, verify the content of file "commit-users.txt" to check how many users commited into your projects
 #
 # -------------------------------------------------------------
 
