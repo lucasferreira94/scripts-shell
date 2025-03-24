@@ -13,6 +13,7 @@
 # -------------------------------------------------------------
 
 GIT_DIRS="$(find -name '.git')"
+TOTAL_AUTHORS="$(wc -l < /tmp/commit-users.txt)"
 
 for i in ${GIT_DIRS}; do
     cd $i
@@ -21,4 +22,6 @@ for i in ${GIT_DIRS}; do
 done
 
 printf "\n"
-echo "File exported! check the list of users commit into: /tmp/commit-users.txt"
+echo "Total of authors: ${TOTAL_AUTHORS}" 
+printf "\n"
+echo "File exported! check the list of users commit into: /tmp/commit-users.txt \n"
