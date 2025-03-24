@@ -15,9 +15,9 @@ GIT_DIRS="$(find -name '.git')"
 
 for i in ${GIT_DIRS}; do
     cd $i
-    git log | grep Author | sort | uniq >> ${PWD}/commit-users.txt
+    git log | grep Author | sort | uniq >> /tmp/commit-users.txt
     cd - 
 done
 
 printf "\n"
-echo "Arquivo exportado! confira a lista de users commit em: ${PWD}/commit-users.txt"
+echo "Arquivo exportado! confira a lista de users commit em: /tmp/commit-users.txt"
