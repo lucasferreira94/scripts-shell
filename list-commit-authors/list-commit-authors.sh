@@ -21,4 +21,4 @@ for i in ${GIT_DIRS}; do
 done
 
 printf "\n"
-echo "Arquivo exportado! confira a lista de users commit em: /tmp/commit-users.txt"
+echo "File exported! check the list of users commit into: /tmp/commit-users.txt"
