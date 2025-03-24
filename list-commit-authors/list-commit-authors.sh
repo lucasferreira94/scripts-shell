@@ -15,7 +15,7 @@ GIT_DIRS="$(find -name '.git')"
 
 for i in ${GIT_DIRS}; do
     cd $i
-    git log | grep Author | sort | uniq >> /tmp/commit-users.txt
+    git log | grep Author | sort | uniq >> /tmp/commit-users-"$(date +%s)".txt
     cd - 
 done
 
