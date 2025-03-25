@@ -3,7 +3,7 @@
 # -------------------------- HEADER --------------------------
 #
 #   List all commits authors in all cloned repos
-#   v1.0
+#   v1.2
 #
 #   How to use:
 #   1. chmod +x ./list-commit-authors.sh
@@ -14,12 +14,22 @@
 
 GIT_DIRS="$(find -name '.git')"
 TOTAL_AUTHORS="$(wc -l < /tmp/commit-users.txt)"
+OUTPUT_FILE="/tmp/commit-users.txt"
+TMP_FILE=$(mktemp)
+
+# Clear the output file if it exists
+> "$OUTPUT_FILE"
 
 for i in ${GIT_DIRS}; do
     cd $i
-    git log | grep Author | sort | uniq >> /tmp/commit-users.txt
+    git log | grep Author | sort | uniq -u  >> "$TMP_FILE"
     cd - 
 done
+
+# Remove duplicates while preserving order
+awk '!seen[$0]++' "$TMP_FILE" > "$OUTPUT_FILE"
+
+rm "$TMP_FILE"
 
 printf "\n"
 echo "Total of authors: ${TOTAL_AUTHORS}" 
